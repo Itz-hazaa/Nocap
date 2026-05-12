@@ -1,0 +1,1995 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NoCap Academy – Shaping Future Doctors & Academic Achievers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+<style>
+/* ===== CSS VARIABLES ===== */
+:root {
+  --pink:      #FFB5C8;
+  --pink-deep: #F78DA7;
+  --lavender:  #C9BCFF;
+  --lav-deep:  #A897FF;
+  --peach:     #FFCFAA;
+  --peach-deep:#FFAE7A;
+  --blue:      #B8DEFF;
+  --blue-deep: #7EC8F4;
+  --mint:      #BFFCE0;
+  --cream:     #FFF8F2;
+  --white:     #FFFFFF;
+  --text-dark: #2A1F3D;
+  --text-mid:  #5A4E6A;
+  --text-soft: #8B7FA0;
+  --glass-bg:  rgba(255,255,255,0.55);
+  --glass-border: rgba(255,255,255,0.75);
+  --shadow-sm: 0 4px 20px rgba(160,120,200,0.10);
+  --shadow-md: 0 8px 40px rgba(160,120,200,0.15);
+  --shadow-lg: 0 16px 60px rgba(160,120,200,0.22);
+  --radius-sm: 14px;
+  --radius-md: 22px;
+  --radius-lg: 36px;
+  --nav-h: 72px;
+}
+[data-theme="dark"] {
+  --cream:     #1A1226;
+  --white:     #231836;
+  --text-dark: #F0E8FF;
+  --text-mid:  #C4B8D8;
+  --text-soft: #8B7FA0;
+  --glass-bg:  rgba(40,28,70,0.65);
+  --glass-border: rgba(140,100,200,0.22);
+  --shadow-sm: 0 4px 20px rgba(0,0,0,0.3);
+  --shadow-md: 0 8px 40px rgba(0,0,0,0.35);
+  --shadow-lg: 0 16px 60px rgba(0,0,0,0.45);
+}
+
+/* ===== RESET & BASE ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--cream);
+  color:var(--text-dark);
+  overflow-x:hidden;
+  transition:background 0.4s,color 0.4s;
+}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+ul{list-style:none;}
+
+/* ===== UTILITY ===== */
+.container{width:min(1160px,92vw);margin-inline:auto;}
+.section{padding:96px 0;}
+.section-tag{
+  display:inline-block;
+  background:linear-gradient(135deg,var(--lavender),var(--pink));
+  color:var(--text-dark);
+  font-size:0.78rem;
+  font-weight:600;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  padding:6px 18px;
+  border-radius:99px;
+  margin-bottom:14px;
+}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,4vw,2.9rem);
+  font-weight:700;
+  line-height:1.2;
+  margin-bottom:18px;
+  color:var(--text-dark);
+}
+.section-sub{
+  font-size:1.05rem;
+  color:var(--text-mid);
+  line-height:1.75;
+  max-width:620px;
+}
+.center{text-align:center;}
+.center .section-sub{margin-inline:auto;}
+
+/* ===== GRADIENT TEXT ===== */
+.grad-text{
+  background:linear-gradient(135deg,var(--lav-deep) 0%,var(--pink-deep) 50%,var(--peach-deep) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+/* ===== BUTTONS ===== */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'DM Sans',sans-serif;
+  font-size:0.95rem;font-weight:600;
+  padding:14px 30px;border-radius:99px;
+  border:none;cursor:pointer;
+  transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  position:relative;overflow:hidden;
+}
+.btn::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(rgba(255,255,255,0.18),transparent);
+  opacity:0;transition:opacity 0.3s;
+}
+.btn:hover::after{opacity:1;}
+.btn:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);}
+.btn:active{transform:translateY(0);}
+
+.btn-primary{
+  background:linear-gradient(135deg,var(--lav-deep),var(--pink-deep));
+  color:#fff;
+  box-shadow:0 6px 24px rgba(168,151,255,0.35);
+}
+.btn-outline{
+  background:var(--glass-bg);
+  backdrop-filter:blur(12px);
+  border:2px solid var(--glass-border);
+  color:var(--text-dark);
+}
+.btn-sm{padding:10px 22px;font-size:0.88rem;}
+
+/* ===== NAVBAR ===== */
+#navbar{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  height:var(--nav-h);
+  display:flex;align-items:center;
+  background:var(--glass-bg);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--glass-border);
+  transition:all 0.4s;
+}
+#navbar.scrolled{
+  box-shadow:var(--shadow-sm);
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  width:100%;
+}
+.nav-logo{
+  display:flex;align-items:center;gap:10px;
+  font-family:'Playfair Display',serif;
+  font-size:1.35rem;font-weight:700;
+  color:var(--text-dark);
+}
+.logo-dot{
+  width:36px;height:36px;border-radius:50%;
+  background:linear-gradient(135deg,var(--lavender),var(--pink));
+  display:grid;place-items:center;
+  font-size:1rem;
+}
+.nav-links{
+  display:flex;align-items:center;gap:32px;
+}
+.nav-links a{
+  font-size:0.9rem;font-weight:500;
+  color:var(--text-mid);
+  transition:color 0.25s;
+  position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;
+  width:0;height:2px;
+  background:linear-gradient(90deg,var(--lav-deep),var(--pink-deep));
+  border-radius:99px;transition:width 0.3s;
+}
+.nav-links a:hover{color:var(--text-dark);}
+.nav-links a:hover::after{width:100%;}
+.nav-actions{display:flex;align-items:center;gap:12px;}
+.theme-toggle{
+  width:42px;height:42px;border-radius:50%;
+  background:var(--glass-bg);border:1.5px solid var(--glass-border);
+  display:grid;place-items:center;cursor:pointer;
+  font-size:1.1rem;transition:all 0.3s;
+}
+.theme-toggle:hover{transform:rotate(20deg);box-shadow:var(--shadow-sm);}
+.hamburger{
+  display:none;flex-direction:column;gap:5px;cursor:pointer;
+  width:32px;padding:4px;
+}
+.hamburger span{
+  height:2px;background:var(--text-dark);
+  border-radius:99px;transition:all 0.3s;
+}
+.mobile-menu{
+  display:none;position:fixed;inset:0;top:var(--nav-h);
+  background:var(--cream);z-index:999;
+  padding:32px;flex-direction:column;gap:24px;
+  animation:slideDown 0.35s ease;
+}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-size:1.3rem;font-weight:500;color:var(--text-dark);}
+@keyframes slideDown{from{opacity:0;transform:translateY(-12px);}to{opacity:1;transform:none;}}
+
+/* ===== HERO ===== */
+#hero{
+  min-height:100vh;
+  padding-top:calc(var(--nav-h) + 60px);
+  padding-bottom:80px;
+  position:relative;
+  overflow:hidden;
+  display:flex;align-items:center;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(ellipse 70% 60% at 20% 30%,rgba(201,188,255,0.35) 0%,transparent 70%),
+    radial-gradient(ellipse 60% 50% at 80% 70%,rgba(255,181,200,0.30) 0%,transparent 70%),
+    radial-gradient(ellipse 50% 50% at 50% 100%,rgba(255,207,170,0.20) 0%,transparent 70%),
+    var(--cream);
+}
+.hero-blob{
+  position:absolute;border-radius:50%;filter:blur(80px);opacity:0.55;
+  animation:blobFloat 8s ease-in-out infinite alternate;
+}
+.hero-blob:nth-child(1){width:420px;height:420px;background:var(--lavender);top:-100px;right:-80px;animation-delay:0s;}
+.hero-blob:nth-child(2){width:300px;height:300px;background:var(--pink);bottom:0;left:-60px;animation-delay:2s;}
+.hero-blob:nth-child(3){width:220px;height:220px;background:var(--peach);top:40%;right:15%;animation-delay:4s;}
+@keyframes blobFloat{from{transform:translateY(0) scale(1);}to{transform:translateY(-30px) scale(1.05);}}
+
+.hero-inner{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:60px;align-items:center;
+}
+.hero-left{animation:fadeUp 0.9s ease both;}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--glass-bg);backdrop-filter:blur(12px);
+  border:1.5px solid var(--glass-border);
+  border-radius:99px;padding:8px 18px;
+  font-size:0.82rem;font-weight:600;color:var(--text-mid);
+  margin-bottom:24px;
+}
+.eyebrow-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--lav-deep),var(--pink-deep));animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(1.4);opacity:0.6;}}
+.hero-h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.8rem,5.5vw,4.2rem);
+  font-weight:700;line-height:1.1;
+  margin-bottom:22px;
+}
+.hero-desc{
+  font-size:1.05rem;color:var(--text-mid);
+  line-height:1.8;margin-bottom:36px;max-width:500px;
+}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap;align-items:center;}
+.hero-stats{
+  display:flex;gap:28px;margin-top:44px;flex-wrap:wrap;
+}
+.hstat{text-align:center;}
+.hstat-num{
+  font-family:'Playfair Display',serif;
+  font-size:1.9rem;font-weight:700;
+  background:linear-gradient(135deg,var(--lav-deep),var(--pink-deep));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hstat-label{font-size:0.8rem;color:var(--text-soft);font-weight:500;margin-top:2px;}
+
+.hero-right{
+  display:flex;justify-content:center;align-items:center;
+  animation:fadeUp 0.9s 0.2s ease both;
+}
+/* ===== HERO ILLUSTRATION ===== */
+.hero-illus-wrap{
+  position:relative;
+  width:440px;height:480px;
+  flex-shrink:0;
+}
+.hero-main-svg{
+  width:100%;height:100%;
+  animation:floatA 6s ease-in-out infinite;
+  filter:drop-shadow(0 20px 40px rgba(168,151,255,0.22));
+}
+.hero-chip{
+  position:absolute;
+  background:var(--glass-bg);backdrop-filter:blur(14px);
+  border:1.5px solid var(--glass-border);
+  border-radius:99px;padding:9px 18px;
+  font-size:0.8rem;font-weight:600;color:var(--text-dark);
+  white-space:nowrap;box-shadow:var(--shadow-sm);
+}
+.chip-a{top:12px;right:-10px;animation:floatB 5s ease-in-out infinite;}
+.chip-b{bottom:120px;left:-20px;animation:floatA 6.5s 1s ease-in-out infinite;}
+.chip-c{bottom:60px;right:-10px;animation:floatB 7s 0.5s ease-in-out infinite;}
+@keyframes floatA{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
+@keyframes floatB{0%,100%{transform:translateY(0);}50%{transform:translateY(10px);}}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:none;}}
+
+/* ===== ABOUT ===== */
+#about{background:var(--white);}
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;
+}
+.about-feature-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:14px;
+  margin-top:32px;
+}
+.af-card{
+  background:var(--glass-bg);backdrop-filter:blur(12px);
+  border:1.5px solid var(--glass-border);
+  border-radius:var(--radius-sm);padding:18px;
+  transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  cursor:default;
+}
+.af-card:hover{transform:translateY(-6px) scale(1.02);box-shadow:var(--shadow-md);}
+.af-icon{font-size:1.5rem;margin-bottom:8px;}
+.af-title{font-size:0.88rem;font-weight:600;color:var(--text-dark);}
+.af-sub{font-size:0.76rem;color:var(--text-soft);margin-top:3px;line-height:1.5;}
+.about-visual{
+  display:grid;grid-template-columns:1fr 1fr;gap:16px;
+}
+.av-card{
+  border-radius:var(--radius-md);padding:28px 22px;
+  text-align:center;
+  transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+}
+.av-card:hover{transform:translateY(-8px);}
+.av-card:nth-child(1){background:linear-gradient(135deg,rgba(201,188,255,0.4),rgba(255,181,200,0.3));grid-column:1/-1;}
+.av-card:nth-child(2){background:linear-gradient(135deg,rgba(255,207,170,0.4),rgba(255,181,200,0.3));}
+.av-card:nth-child(3){background:linear-gradient(135deg,rgba(184,222,255,0.4),rgba(201,188,255,0.3));}
+.av-num{
+  font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;
+  background:linear-gradient(135deg,var(--lav-deep),var(--pink-deep));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.av-label{font-size:0.85rem;color:var(--text-mid);margin-top:4px;font-weight:500;}
+
+/* ===== COURSES ===== */
+#courses{background:var(--cream);}
+.courses-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  margin-top:52px;
+}
+.course-card{
+  background:var(--glass-bg);backdrop-filter:blur(16px);
+  border:1.5px solid var(--glass-border);
+  border-radius:var(--radius-lg);padding:36px 28px;
+  box-shadow:var(--shadow-sm);
+  transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.course-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--card-a),var(--card-b));
+  opacity:0.12;transition:opacity 0.4s;
+}
+.course-card:hover{transform:translateY(-12px) scale(1.02);box-shadow:var(--shadow-lg);}
+.course-card:hover::before{opacity:0.22;}
+.course-card:nth-child(1){--card-a:var(--lavender);--card-b:var(--pink);}
+.course-card:nth-child(2){--card-a:var(--peach);--card-b:var(--lavender);}
+.course-card:nth-child(3){--card-a:var(--blue);--card-b:var(--mint);}
+.course-emoji{font-size:2.5rem;margin-bottom:20px;}
+.course-badge{
+  display:inline-block;margin-bottom:14px;
+  font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+  padding:5px 14px;border-radius:99px;
+  background:linear-gradient(135deg,var(--lavender),var(--pink));
+  color:var(--text-dark);
+}
+.course-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.55rem;font-weight:700;margin-bottom:12px;
+}
+.course-desc{
+  font-size:0.9rem;color:var(--text-mid);line-height:1.75;
+  flex:1;margin-bottom:24px;
+}
+.course-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;}
+.ctag{
+  background:rgba(201,188,255,0.2);border:1px solid rgba(201,188,255,0.4);
+  font-size:0.73rem;font-weight:500;color:var(--text-mid);
+  padding:4px 12px;border-radius:99px;
+}
+
+/* ===== FEATURES ===== */
+#features{background:var(--white);}
+.features-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+  margin-top:52px;
+}
+.feat-card{
+  background:var(--glass-bg);backdrop-filter:blur(12px);
+  border:1.5px solid var(--glass-border);
+  border-radius:var(--radius-md);padding:28px 20px;
+  text-align:center;
+  box-shadow:var(--shadow-sm);
+  transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  cursor:default;
+}
+.feat-card:hover{transform:translateY(-8px) scale(1.03);box-shadow:var(--shadow-md);}
+.feat-icon-wrap{
+  width:56px;height:56px;border-radius:50%;margin:0 auto 14px;
+  display:grid;place-items:center;font-size:1.5rem;
+  background:linear-gradient(135deg,var(--lavender),var(--pink));
+}
+.feat-name{font-size:0.88rem;font-weight:600;color:var(--text-dark);}
+.feat-desc{font-size:0.78rem;color:var(--text-soft);margin-top:6px;line-height:1.5;}
+
+/* ===== FACULTY ===== */
+#faculty{background:var(--cream);}
+.faculty-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
+  margin-top:52px;
+}
+.faculty-card{
+  background:var(--glass-bg);backdrop-filter:blur(16px);
+  border:1.5px solid var(--glass-border);
+  border-radius:var(--radius-lg);overflow:hidden;
+  box-shadow:var(--shadow-sm);
+  transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+}
+.faculty-card:hover{transform:translateY(-10px);box-shadow:var(--shadow-lg);}
+.faculty-photo{
+  height:200px;display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;padding:8px;
+}
+.fc-1 .faculty-photo{background:linear-gradient(135deg,rgba(201,188,255,0.5),rgba(255,181,200,0.4));}
+.fc-2 .faculty-photo{background:linear-gradient(135deg,rgba(255,207,170,0.5),rgba(255,181,200,0.4));}
+.fc-3 .faculty-photo{background:linear-gradient(135deg,rgba(184,222,255,0.5),rgba(201,188,255,0.4));}
+.faculty-info{padding:24px;}
+.fac-name{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;margin-bottom:4px;}
+.fac-sub{font-size:0.82rem;color:var(--text-soft);margin-bottom:12px;}
+.fac-exp{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:0.8rem;font-weight:500;color:var(--text-mid);
+  background:linear-gradient(135deg,rgba(201,188,255,0.2),rgba(255,181,200,0.2));
+  padding:5px 14px;border-radius:99px;
+}
+.fac-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.fac-tag{
+  font-size:0.72rem;font-weight:500;padding:3px 10px;border-radius:99px;
+  background:rgba(201,188,255,0.15);border:1px solid rgba(201,188,255,0.3);
+  color:var(--text-mid);
+}
+
+/* ===== TESTIMONIALS ===== */
+#testimonials{background:var(--white);overflow:hidden;}
+.testi-slider{
+  position:relative;margin-top:52px;
+  overflow:hidden;padding:8px 0 20px;
+}
+.testi-track{
+  display:flex;gap:24px;
+  transition:transform 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+.testi-card{
+  min-width:340px;
+  background:var(--glass-bg);backdrop-filter:blur(16px);
+  border:1.5px solid var(--glass-border);
+  border-radius:var(--radius-lg);padding:32px;
+  box-shadow:var(--shadow-sm);
+  flex-shrink:0;
+}
+.testi-stars{font-size:1rem;margin-bottom:14px;letter-spacing:2px;}
+.testi-text{
+  font-size:0.95rem;color:var(--text-mid);line-height:1.8;
+  font-style:italic;margin-bottom:22px;
+  position:relative;
+}
+.testi-text::before{
+  content:'\201C';
+  font-family:'Playfair Display',serif;
+  font-size:4rem;color:var(--lavender);
+  position:absolute;top:-20px;left:-8px;
+  line-height:1;opacity:0.5;
+}
+.testi-author{display:flex;align-items:center;gap:14px;}
+.testi-avatar{
+  width:44px;height:44px;border-radius:50%;
+  display:grid;place-items:center;font-size:1.2rem;
+  background:linear-gradient(135deg,var(--lavender),var(--pink));
+}
+.testi-name{font-size:0.9rem;font-weight:600;color:var(--text-dark);}
+.testi-role{font-size:0.76rem;color:var(--text-soft);}
+.testi-nav{
+  display:flex;justify-content:center;gap:12px;margin-top:28px;
+}
+.testi-dot{
+  width:10px;height:10px;border-radius:50%;
+  background:var(--lavender);opacity:0.4;cursor:pointer;
+  transition:all 0.3s;border:none;
+}
+.testi-dot.active{opacity:1;width:28px;border-radius:99px;background:linear-gradient(90deg,var(--lav-deep),var(--pink-deep));}
+.testi-arrows{
+  display:flex;justify-content:center;gap:12px;margin-top:16px;
+}
+.tarrow{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--glass-bg);backdrop-filter:blur(12px);
+  border:1.5px solid var(--glass-border);
+  display:grid;place-items:center;cursor:pointer;
+  font-size:1rem;transition:all 0.3s;
+}
+.tarrow:hover{background:linear-gradient(135deg,var(--lavender),var(--pink));transform:scale(1.1);}
+
+/* ===== COUNTERS ===== */
+#counters{
+  background:linear-gradient(135deg,rgba(201,188,255,0.25) 0%,rgba(255,181,200,0.20) 50%,rgba(255,207,170,0.20) 100%);
+  padding:72px 0;
+}
+.counters-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+}
+.counter-card{
+  background:var(--glass-bg);backdrop-filter:blur(16px);
+  border:1.5px solid var(--glass-border);
+  border-radius:var(--radius-md);padding:32px 24px;
+  text-align:center;
+  box-shadow:var(--shadow-sm);
+  transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+}
+.counter-card:hover{transform:translateY(-6px);}
+.counter-icon{font-size:2rem;margin-bottom:12px;}
+.counter-num{
+  font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:700;
+  background:linear-gradient(135deg,var(--lav-deep),var(--pink-deep));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  line-height:1;margin-bottom:8px;
+}
+.counter-label{font-size:0.88rem;color:var(--text-mid);font-weight:500;}
+
+/* ===== FAQ ===== */
+#faq{background:var(--cream);}
+.faq-list{max-width:780px;margin:52px auto 0;}
+.faq-item{
+  background:var(--glass-bg);backdrop-filter:blur(12px);
+  border:1.5px solid var(--glass-border);
+  border-radius:var(--radius-sm);margin-bottom:12px;
+  overflow:hidden;
+  transition:box-shadow 0.3s;
+}
+.faq-item.open{box-shadow:var(--shadow-md);}
+.faq-q{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 24px;cursor:pointer;
+  font-weight:600;font-size:0.95rem;color:var(--text-dark);
+  user-select:none;
+}
+.faq-arrow{
+  font-size:1.2rem;transition:transform 0.35s;flex-shrink:0;margin-left:12px;
+}
+.faq-item.open .faq-arrow{transform:rotate(180deg);}
+.faq-a{
+  max-height:0;overflow:hidden;
+  padding:0 24px;
+  font-size:0.9rem;color:var(--text-mid);line-height:1.75;
+  transition:max-height 0.4s ease,padding 0.4s ease;
+}
+.faq-item.open .faq-a{max-height:400px;padding:0 24px 20px;}
+
+/* ===== CONTACT ===== */
+#contact{background:var(--white);}
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1.2fr;gap:52px;
+  margin-top:52px;align-items:start;
+}
+.contact-info-card{
+  background:var(--glass-bg);backdrop-filter:blur(16px);
+  border:1.5px solid var(--glass-border);
+  border-radius:var(--radius-lg);padding:32px;
+  box-shadow:var(--shadow-sm);margin-bottom:20px;
+}
+.branch-name{
+  font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;
+  margin-bottom:16px;display:flex;align-items:center;gap:10px;
+}
+.branch-flag{font-size:1.4rem;}
+.contact-row{
+  display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;
+  font-size:0.88rem;color:var(--text-mid);
+}
+.contact-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
+.social-row{
+  display:flex;gap:10px;margin-top:20px;
+}
+.social-btn{
+  width:40px;height:40px;border-radius:50%;
+  display:grid;place-items:center;font-size:1rem;
+  background:linear-gradient(135deg,var(--lavender),var(--pink));
+  transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);cursor:pointer;
+}
+.social-btn:hover{transform:translateY(-4px) scale(1.1);box-shadow:var(--shadow-sm);}
+.contact-form-wrap{
+  background:var(--glass-bg);backdrop-filter:blur(16px);
+  border:1.5px solid var(--glass-border);
+  border-radius:var(--radius-lg);padding:36px;
+  box-shadow:var(--shadow-sm);
+}
+.form-title{
+  font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;
+  margin-bottom:24px;
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+.form-group label{font-size:0.82rem;font-weight:600;color:var(--text-mid);}
+.form-group input,
+.form-group select,
+.form-group textarea{
+  background:var(--cream);
+  border:1.5px solid var(--glass-border);
+  border-radius:var(--radius-sm);
+  padding:13px 16px;
+  font-family:'DM Sans',sans-serif;
+  font-size:0.9rem;color:var(--text-dark);
+  outline:none;transition:border-color 0.3s,box-shadow 0.3s;
+  resize:none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+  border-color:var(--lav-deep);
+  box-shadow:0 0 0 3px rgba(168,151,255,0.15);
+}
+.form-group textarea{height:110px;}
+.form-success{
+  display:none;text-align:center;padding:20px;
+  color:var(--text-mid);font-size:0.95rem;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  background:var(--white);
+  border-top:1px solid var(--glass-border);
+  padding:64px 0 28px;
+}
+.footer-grid{
+  display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;
+  margin-bottom:48px;
+}
+.footer-brand p{
+  font-size:0.88rem;color:var(--text-soft);line-height:1.75;margin:14px 0 22px;max-width:260px;
+}
+.footer-social{display:flex;gap:10px;}
+.footer-col h4{
+  font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;
+  margin-bottom:18px;
+}
+.footer-col ul li{margin-bottom:10px;}
+.footer-col ul li a{
+  font-size:0.87rem;color:var(--text-soft);
+  transition:color 0.25s;
+}
+.footer-col ul li a:hover{color:var(--lav-deep);}
+.footer-divider{
+  height:1px;background:var(--glass-border);margin-bottom:24px;
+}
+.footer-bottom{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  font-size:0.82rem;color:var(--text-soft);
+}
+.footer-tagline{
+  font-family:'Playfair Display',serif;font-style:italic;
+  color:var(--text-mid);
+}
+
+/* ===== FLOATING WA ===== */
+.wa-float{
+  position:fixed;bottom:28px;right:28px;z-index:999;
+  width:58px;height:58px;border-radius:50%;
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  display:grid;place-items:center;
+  box-shadow:0 6px 24px rgba(37,211,102,0.4);
+  cursor:pointer;
+  font-size:1.6rem;
+  transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  text-decoration:none;
+}
+.wa-float:hover{transform:scale(1.15) translateY(-4px);box-shadow:0 10px 32px rgba(37,211,102,0.5);}
+.wa-pulse{
+  position:absolute;inset:0;border-radius:50%;
+  background:rgba(37,211,102,0.4);
+  animation:waPulse 2.5s infinite;
+}
+@keyframes waPulse{0%{transform:scale(1);opacity:0.7;}70%{transform:scale(1.6);opacity:0;}100%{transform:scale(1.6);opacity:0;}}
+
+/* ===== SCROLL ANIMATIONS ===== */
+.reveal{
+  opacity:0;transform:translateY(28px);
+  transition:opacity 0.7s ease,transform 0.7s ease;
+}
+.reveal.visible{opacity:1;transform:none;}
+.reveal-delay-1{transition-delay:0.1s;}
+.reveal-delay-2{transition-delay:0.2s;}
+.reveal-delay-3{transition-delay:0.3s;}
+.reveal-delay-4{transition-delay:0.4s;}
+
+/* ===== MAP PLACEHOLDER ===== */
+.map-placeholder{
+  width:100%;height:180px;
+  background:linear-gradient(135deg,rgba(201,188,255,0.2),rgba(255,181,200,0.2));
+  border-radius:var(--radius-sm);margin-top:16px;
+  display:grid;place-items:center;
+  font-size:0.88rem;color:var(--text-soft);
+  border:1.5px dashed rgba(168,151,255,0.3);
+}
+
+/* ===== FORM VALIDATION ===== */
+.form-error{
+  display:none;font-size:0.78rem;color:#E05A5A;margin-top:4px;
+}
+.form-group.has-error input,
+.form-group.has-error select,
+.form-group.has-error textarea{
+  border-color:#E05A5A;
+}
+.form-group.has-error .form-error{display:block;}
+
+/* ===== SKIP LINK (ACCESSIBILITY) ===== */
+.skip-link{
+  position:absolute;top:-100px;left:16px;z-index:9999;
+  background:var(--lav-deep);color:#fff;padding:10px 18px;
+  border-radius:var(--radius-sm);font-weight:600;font-size:0.9rem;
+  transition:top 0.2s;
+}
+.skip-link:focus{top:8px;}
+
+/* ===== REDUCED MOTION ===== */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:0.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:0.01ms!important;
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  .features-grid{grid-template-columns:repeat(3,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:860px){
+  .hero-inner{grid-template-columns:1fr;gap:40px;}
+  .hero-illus-wrap{display:none;}
+  .about-grid{grid-template-columns:1fr;}
+  .about-visual{order:-1;}
+  .courses-grid{grid-template-columns:1fr;}
+  .features-grid{grid-template-columns:repeat(2,1fr);}
+  .faculty-grid{grid-template-columns:1fr 1fr;}
+  .counters-grid{grid-template-columns:repeat(2,1fr);}
+  .contact-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+}
+@media(max-width:560px){
+  .section{padding:64px 0;}
+  .section-title{font-size:1.75rem;}
+  .features-grid{grid-template-columns:1fr 1fr;}
+  .faculty-grid{grid-template-columns:1fr;}
+  .counters-grid{grid-template-columns:1fr 1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .hero-h1{font-size:2.4rem;}
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">
+        <div class="logo-dot">🎓</div>
+        NoCap Academy
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#faculty">Faculty</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle theme" aria-pressed="false">🌙</button>
+        <a href="#contact" class="btn btn-primary btn-sm" style="display:none" id="navCta">Enroll Now</a>
+        <button type="button" class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <button type="button" class="mobile-close" id="mobileClose" aria-label="Close menu" style="align-self:flex-end;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--text-dark);line-height:1;padding:4px 8px;">✕</button>
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#courses" class="mobile-link">Courses</a>
+  <a href="#features" class="mobile-link">Features</a>
+  <a href="#faculty" class="mobile-link">Faculty</a>
+  <a href="#testimonials" class="mobile-link">Reviews</a>
+  <a href="#faq" class="mobile-link">FAQ</a>
+  <a href="#contact" class="mobile-link">Contact</a>
+  <a href="#contact" class="btn btn-primary">Enroll Now</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section id="hero" aria-label="Hero">
+  <div class="hero-bg">
+    <div class="hero-blob" aria-hidden="true"></div>
+    <div class="hero-blob" aria-hidden="true"></div>
+    <div class="hero-blob" aria-hidden="true"></div>
+  </div>
+  <div class="container" id="main-content">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-eyebrow">
+          <span class="eyebrow-dot"></span>
+          India &amp; UAE's Rising EdTech Brand
+        </div>
+        <h1 class="hero-h1">
+          <span class="grad-text">NoCap</span><br/>Academy
+        </h1>
+        <p style="font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--text-mid);margin-bottom:14px;font-style:italic;">Shaping Future Doctors &amp; Academic Achievers</p>
+        <p class="hero-desc">Expert coaching for NEET, Class 11 &amp; Class 12 with concept-based learning, regular tests, strategic preparation, and personal mentorship.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary">
+            ✨ Enroll Now
+          </a>
+          <a href="#contact" class="btn btn-outline">
+            📅 Book Free Demo
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hstat">
+            <div class="hstat-num counter-anim" data-target="500">0</div>
+            <div class="hstat-label">Students Enrolled</div>
+          </div>
+          <div class="hstat">
+            <div class="hstat-num counter-anim" data-target="95">0</div>
+            <div class="hstat-label">% Pass Rate</div>
+          </div>
+          <div class="hstat">
+            <div class="hstat-num counter-anim" data-target="8">0</div>
+            <div class="hstat-label">Expert Faculty</div>
+          </div>
+          <div class="hstat">
+            <div class="hstat-num counter-anim" data-target="2">0</div>
+            <div class="hstat-label">Branches</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-illus-wrap">
+          <!-- Main hero illustration: Girl studying at laptop -->
+          <svg viewBox="0 0 420 460" fill="none" xmlns="http://www.w3.org/2000/svg" class="hero-main-svg" aria-hidden="true">
+            <!-- Background circle -->
+            <circle cx="210" cy="230" r="200" fill="#E8E0FF" opacity="0.55"/>
+            <!-- Desk -->
+            <rect x="60" y="320" width="300" height="18" rx="9" fill="#C9BCFF"/>
+            <rect x="100" y="338" width="20" height="60" rx="8" fill="#B8ACEC"/>
+            <rect x="300" y="338" width="20" height="60" rx="8" fill="#B8ACEC"/>
+            <!-- Laptop base -->
+            <rect x="108" y="270" width="204" height="58" rx="14" fill="#2A1F3D"/>
+            <rect x="116" y="276" width="188" height="46" rx="10" fill="#4A3A6A"/>
+            <!-- Laptop screen bezel -->
+            <rect x="118" y="130" width="184" height="148" rx="14" fill="#2A1F3D"/>
+            <rect x="126" y="138" width="168" height="132" rx="10" fill="#B8DEFF"/>
+            <!-- Screen content: formula lines -->
+            <rect x="136" y="150" width="80" height="7" rx="4" fill="white" opacity="0.6"/>
+            <rect x="136" y="163" width="60" height="7" rx="4" fill="#FFB5C8" opacity="0.8"/>
+            <rect x="136" y="176" width="100" height="7" rx="4" fill="white" opacity="0.5"/>
+            <rect x="136" y="189" width="50" height="7" rx="4" fill="#BFFCE0" opacity="0.8"/>
+            <rect x="220" y="150" width="58" height="110" rx="8" fill="white" opacity="0.12"/>
+            <!-- DNA helix on screen -->
+            <circle cx="249" cy="175" r="10" fill="#F78DA7" opacity="0.7"/>
+            <circle cx="249" cy="200" r="10" fill="#A897FF" opacity="0.7"/>
+            <circle cx="249" cy="225" r="10" fill="#7EC8F4" opacity="0.7"/>
+            <line x1="249" y1="175" x2="249" y2="225" stroke="white" stroke-width="2.5" opacity="0.4"/>
+            <!-- Laptop hinge -->
+            <rect x="108" y="266" width="204" height="8" rx="4" fill="#1A1030"/>
+            <!-- Laptop camera -->
+            <circle cx="210" cy="142" r="4" fill="#1A1030"/>
+            <!-- Student body -->
+            <!-- Torso -->
+            <rect x="162" y="290" width="96" height="40" rx="16" fill="#7EC8F4"/>
+            <!-- Collar / uniform -->
+            <polygon points="210,298 196,314 224,314" fill="#2A1F3D"/>
+            <!-- Arms on desk -->
+            <rect x="130" y="308" width="56" height="22" rx="11" fill="#F5C5A3"/>
+            <rect x="234" y="308" width="56" height="22" rx="11" fill="#F5C5A3"/>
+            <!-- Neck -->
+            <rect x="198" y="274" width="24" height="24" rx="10" fill="#F5C5A3"/>
+            <!-- Head -->
+            <ellipse cx="210" cy="248" rx="42" ry="40" fill="#F5C5A3"/>
+            <!-- Hair back -->
+            <ellipse cx="210" cy="230" rx="44" ry="34" fill="#1A1030"/>
+            <!-- Hair top -->
+            <ellipse cx="210" cy="218" rx="40" ry="22" fill="#1A1030"/>
+            <!-- Face layer over hair -->
+            <ellipse cx="210" cy="252" rx="34" ry="32" fill="#F5C5A3"/>
+            <!-- Eyes -->
+            <ellipse cx="197" cy="248" rx="5" ry="5.5" fill="#1A1030"/>
+            <ellipse cx="223" cy="248" rx="5" ry="5.5" fill="#1A1030"/>
+            <!-- Eye shine -->
+            <circle cx="199" cy="246" r="2" fill="white"/>
+            <circle cx="225" cy="246" r="2" fill="white"/>
+            <!-- Eyebrows -->
+            <path d="M191 241 Q197 238 203 241" stroke="#1A1030" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <path d="M217 241 Q223 238 229 241" stroke="#1A1030" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <!-- Smile -->
+            <path d="M199 260 Q210 270 221 260" stroke="#C0614A" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <!-- Teeth -->
+            <path d="M202 261 Q210 268 218 261" fill="white"/>
+            <!-- Cheeks -->
+            <ellipse cx="188" cy="258" rx="9" ry="6" fill="#F78DA7" opacity="0.35"/>
+            <ellipse cx="232" cy="258" rx="9" ry="6" fill="#F78DA7" opacity="0.35"/>
+            <!-- Braid - left side -->
+            <circle cx="172" cy="240" r="9" fill="#1A1030"/>
+            <circle cx="170" cy="258" r="9" fill="#1A1030"/>
+            <circle cx="168" cy="276" r="9" fill="#1A1030"/>
+            <circle cx="166" cy="294" r="8" fill="#1A1030"/>
+            <circle cx="164" cy="310" r="7" fill="#1A1030"/>
+            <!-- Hair accessories (green leaf clips) -->
+            <ellipse cx="236" cy="220" rx="10" ry="6" fill="#7ED992" transform="rotate(-30 236 220)"/>
+            <ellipse cx="248" cy="214" rx="9" ry="5" fill="#5BC478" transform="rotate(-15 248 214)"/>
+            <!-- Hair part right -->
+            <ellipse cx="248" cy="232" rx="14" ry="10" fill="#1A1030"/>
+            <!-- Floating badges -->
+            <!-- Badge 1: NEET -->
+            <circle cx="68" cy="180" r="46" fill="#FFB5C8" opacity="0.9"/>
+            <text x="68" y="173" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" font-weight="700" fill="#2A1F3D">NEET</text>
+            <text x="68" y="188" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="#5A4E6A">Ready</text>
+            <text x="68" y="200" text-anchor="middle" font-size="14">🧬</text>
+            <!-- Badge 2: 95% -->
+            <circle cx="355" cy="150" r="40" fill="#C9BCFF" opacity="0.9"/>
+            <text x="355" y="145" text-anchor="middle" font-family="'Playfair Display',serif" font-size="18" font-weight="700" fill="#2A1F3D">95%</text>
+            <text x="355" y="162" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" fill="#5A4E6A">Pass Rate</text>
+            <!-- Badge 3: books lower left -->
+            <rect x="38" y="300" width="72" height="52" rx="14" fill="#FFCFAA" opacity="0.9"/>
+            <text x="74" y="322" text-anchor="middle" font-size="16">📚</text>
+            <text x="74" y="340" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" font-weight="600" fill="#2A1F3D">Daily DPPs</text>
+            <!-- Badge 4: star right -->
+            <rect x="312" y="280" width="72" height="52" rx="14" fill="#BFFCE0" opacity="0.9"/>
+            <text x="348" y="302" text-anchor="middle" font-size="16">⭐</text>
+            <text x="348" y="320" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" font-weight="600" fill="#2A1F3D">Top Mentor</text>
+            <!-- Floating dots decoration -->
+            <circle cx="350" cy="340" r="7" fill="#FFB5C8" opacity="0.6"/>
+            <circle cx="370" cy="360" r="5" fill="#C9BCFF" opacity="0.6"/>
+            <circle cx="55" cy="120" r="6" fill="#7EC8F4" opacity="0.6"/>
+            <circle cx="75" cy="140" r="4" fill="#FFCFAA" opacity="0.7"/>
+          </svg>
+
+          <!-- Floating info chips -->
+          <div class="hero-chip chip-a">🧬 NEET Expert Faculty</div>
+          <div class="hero-chip chip-b">📊 Weekly Tests</div>
+          <div class="hero-chip chip-c">🏆 95% Success Rate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COUNTERS ===== -->
+<section id="counters">
+  <div class="container">
+    <div class="counters-grid">
+      <div class="counter-card reveal">
+        <div class="counter-icon">🎓</div>
+        <div class="counter-num"><span class="counter-anim" data-target="500">0</span>+</div>
+        <div class="counter-label">Students Trained</div>
+      </div>
+      <div class="counter-card reveal reveal-delay-1">
+        <div class="counter-icon">✅</div>
+        <div class="counter-num"><span class="counter-anim" data-target="95">0</span>%</div>
+        <div class="counter-label">Success Rate</div>
+      </div>
+      <div class="counter-card reveal reveal-delay-2">
+        <div class="counter-icon">📚</div>
+        <div class="counter-num"><span class="counter-anim" data-target="1000">0</span>+</div>
+        <div class="counter-label">Practice Questions Daily</div>
+      </div>
+      <div class="counter-card reveal reveal-delay-3">
+        <div class="counter-icon">🌍</div>
+        <div class="counter-num"><span class="counter-anim" data-target="2">0</span></div>
+        <div class="counter-label">Global Branches</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal">
+        <span class="section-tag">Why Choose Us</span>
+        <h2 class="section-title">Why Choose <span class="grad-text">NoCap Academy?</span></h2>
+        <p class="section-sub">At NoCap Academy, we believe every student can achieve excellence with the right guidance, consistency, and strategy. Our teaching approach focuses on concept clarity, disciplined preparation, regular practice, and personal mentorship to help students succeed in NEET and board examinations.</p>
+        <div class="about-feature-grid">
+          <div class="af-card">
+            <div class="af-icon">👨‍🏫</div>
+            <div class="af-title">Experienced Faculty</div>
+            <div class="af-sub">Dedicated mentors with proven results</div>
+          </div>
+          <div class="af-card">
+            <div class="af-icon">📝</div>
+            <div class="af-title">Daily Practice</div>
+            <div class="af-sub">1000+ DPPs every day</div>
+          </div>
+          <div class="af-card">
+            <div class="af-icon">🧪</div>
+            <div class="af-title">Weekly Tests</div>
+            <div class="af-sub">Sunday tests &amp; analysis</div>
+          </div>
+          <div class="af-card">
+            <div class="af-icon">💡</div>
+            <div class="af-title">Concept Clarity</div>
+            <div class="af-sub">Deep understanding over rote learning</div>
+          </div>
+          <div class="af-card">
+            <div class="af-icon">🔄</div>
+            <div class="af-title">Revision Sessions</div>
+            <div class="af-sub">Structured spaced revision</div>
+          </div>
+          <div class="af-card">
+            <div class="af-icon">🙋</div>
+            <div class="af-title">Doubt Solving</div>
+            <div class="af-sub">Daily personalised sessions</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual reveal reveal-delay-2">
+        <!-- Flat cartoon: Boy reading book -->
+        <div style="grid-column:1/-1;display:flex;justify-content:center;margin-bottom:8px;">
+          <svg viewBox="0 0 320 280" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:300px;filter:drop-shadow(0 12px 28px rgba(168,151,255,0.18));animation:floatA 7s ease-in-out infinite;" aria-hidden="true">
+            <!-- BG blob -->
+            <ellipse cx="160" cy="160" rx="150" ry="130" fill="#EDE8FF" opacity="0.6"/>
+            <!-- Book open -->
+            <rect x="58" y="165" width="204" height="14" rx="7" fill="#C9BCFF"/>
+            <rect x="62" y="100" width="92" height="72" rx="10" fill="#A897FF"/>
+            <rect x="166" y="100" width="92" height="72" rx="10" fill="#FFB5C8"/>
+            <!-- Book lines left page -->
+            <rect x="70" y="112" width="68" height="5" rx="3" fill="white" opacity="0.6"/>
+            <rect x="70" y="122" width="55" height="5" rx="3" fill="white" opacity="0.5"/>
+            <rect x="70" y="132" width="62" height="5" rx="3" fill="white" opacity="0.55"/>
+            <rect x="70" y="142" width="50" height="5" rx="3" fill="white" opacity="0.4"/>
+            <!-- Book lines right page -->
+            <rect x="173" y="112" width="68" height="5" rx="3" fill="white" opacity="0.6"/>
+            <rect x="173" y="122" width="55" height="5" rx="3" fill="white" opacity="0.5"/>
+            <rect x="173" y="132" width="62" height="5" rx="3" fill="white" opacity="0.55"/>
+            <rect x="173" y="142" width="40" height="5" rx="3" fill="white" opacity="0.4"/>
+            <!-- Spine highlight -->
+            <rect x="155" y="100" width="10" height="72" rx="4" fill="#1A1030" opacity="0.12"/>
+            <!-- Boy body -->
+            <rect x="130" y="155" width="60" height="38" rx="14" fill="#7EC8F4"/>
+            <!-- Collar -->
+            <polygon points="160,162 150,178 170,178" fill="#2A1F3D"/>
+            <!-- Arms holding book -->
+            <rect x="70" y="158" width="56" height="18" rx="9" fill="#F5C5A3"/>
+            <rect x="194" y="158" width="56" height="18" rx="9" fill="#F5C5A3"/>
+            <!-- Neck -->
+            <rect x="150" y="135" width="20" height="22" rx="9" fill="#F5C5A3"/>
+            <!-- Head -->
+            <ellipse cx="160" cy="118" rx="34" ry="32" fill="#F5C5A3"/>
+            <!-- Hair -->
+            <ellipse cx="160" cy="100" rx="34" ry="20" fill="#1A1030"/>
+            <ellipse cx="160" cy="106" rx="30" ry="16" fill="#1A1030"/>
+            <!-- Face -->
+            <ellipse cx="160" cy="120" rx="26" ry="26" fill="#F5C5A3"/>
+            <!-- Eyes (looking down at book — angled) -->
+            <ellipse cx="150" cy="118" rx="4" ry="3" fill="#1A1030"/>
+            <ellipse cx="170" cy="118" rx="4" ry="3" fill="#1A1030"/>
+            <circle cx="151" cy="117" r="1.5" fill="white"/>
+            <circle cx="171" cy="117" r="1.5" fill="white"/>
+            <!-- Eyebrows -->
+            <path d="M145 112 Q150 109 155 112" stroke="#1A1030" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <path d="M165 112 Q170 109 175 112" stroke="#1A1030" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <!-- Smile -->
+            <path d="M152 127 Q160 134 168 127" stroke="#C0614A" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <!-- Cheeks -->
+            <ellipse cx="141" cy="123" rx="7" ry="5" fill="#F78DA7" opacity="0.35"/>
+            <ellipse cx="179" cy="123" rx="7" ry="5" fill="#F78DA7" opacity="0.35"/>
+            <!-- Floating stars & sparkles -->
+            <text x="40" y="80" font-size="18" opacity="0.7">✨</text>
+            <text x="265" y="90" font-size="14" opacity="0.6">⭐</text>
+            <text x="52" y="200" font-size="12" opacity="0.5">📝</text>
+            <text x="265" y="200" font-size="13" opacity="0.6">💡</text>
+            <circle cx="52" cy="135" r="6" fill="#FFB5C8" opacity="0.5"/>
+            <circle cx="270" cy="145" r="5" fill="#FFCFAA" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="av-card">
+          <div class="av-num counter-anim" data-target="3">0</div>
+          <div class="av-label">Programs Offered (NEET, Class 11, Class 12)</div>
+        </div>
+        <div class="av-card">
+          <div class="av-num counter-anim" data-target="500">0</div>
+          <div class="av-label">Happy Students</div>
+        </div>
+        <div class="av-card">
+          <div class="av-num counter-anim" data-target="8">0</div>
+          <div class="av-label">Expert Mentors</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COURSES ===== -->
+<section id="courses" class="section">
+  <div class="container">
+    <div class="center reveal">
+      <span class="section-tag">Programs</span>
+      <h2 class="section-title">Our <span class="grad-text">Programs</span></h2>
+      <p class="section-sub">Carefully designed programs to take you from foundation to excellence — whether your goal is NEET or board mastery.</p>
+    </div>
+    <div class="courses-grid">
+      <div class="course-card reveal reveal-delay-1">
+        <div class="course-emoji">🧬</div>
+        <span class="course-badge">NEET Prep</span>
+        <h3 class="course-name">NEET Coaching</h3>
+        <p class="course-desc">Complete NEET preparation with structured lectures, mock tests, revision sessions, and expert guidance to maximise your NEET score.</p>
+        <div class="course-tags">
+          <span class="ctag">Physics</span>
+          <span class="ctag">Chemistry</span>
+          <span class="ctag">Biology</span>
+          <span class="ctag">Mock Tests</span>
+          <span class="ctag">Revision</span>
+        </div>
+        <a href="#contact" class="btn btn-primary btn-sm">Learn More →</a>
+      </div>
+      <div class="course-card reveal reveal-delay-2">
+        <div class="course-emoji">📐</div>
+        <span class="course-badge">Foundation</span>
+        <h3 class="course-name">Class 11 Coaching</h3>
+        <p class="course-desc">Strong foundation building for Physics, Chemistry, Biology, and Mathematics with concept-focused teaching that sets you up for long-term success.</p>
+        <div class="course-tags">
+          <span class="ctag">Physics</span>
+          <span class="ctag">Chemistry</span>
+          <span class="ctag">Biology</span>
+          <span class="ctag">Maths</span>
+          <span class="ctag">DPPs</span>
+        </div>
+        <a href="#contact" class="btn btn-primary btn-sm">Learn More →</a>
+      </div>
+      <div class="course-card reveal reveal-delay-3">
+        <div class="course-emoji">🏆</div>
+        <span class="course-badge">Board + Competitive</span>
+        <h3 class="course-name">Class 12 Coaching</h3>
+        <p class="course-desc">Board exam preparation combined with competitive exam strategies for excellent academic performance and a strong NEET foundation.</p>
+        <div class="course-tags">
+          <span class="ctag">Board Prep</span>
+          <span class="ctag">NEET Base</span>
+          <span class="ctag">Strategy</span>
+          <span class="ctag">Mind Maps</span>
+        </div>
+        <a href="#contact" class="btn btn-primary btn-sm">Learn More →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section id="features" class="section">
+  <div class="container">
+    <div class="center reveal">
+      <span class="section-tag">Student Benefits</span>
+      <h2 class="section-title">What Students <span class="grad-text">Get</span></h2>
+      <p class="section-sub">A comprehensive ecosystem designed to support every stage of your academic journey.</p>
+    </div>
+    <div class="features-grid" style="margin-top:52px">
+      <div class="feat-card reveal"><div class="feat-icon-wrap" aria-hidden="true">📖</div><div class="feat-name">Daily Lectures</div><div class="feat-desc">Structured sessions every day covering the full syllabus</div></div>
+      <div class="feat-card reveal reveal-delay-1"><div class="feat-icon-wrap" aria-hidden="true">✏️</div><div class="feat-name">Handwritten Notes</div><div class="feat-desc">Mentor-crafted notes for every chapter, simplified</div></div>
+      <div class="feat-card reveal reveal-delay-2"><div class="feat-icon-wrap" aria-hidden="true">📄</div><div class="feat-name">PDF Study Material</div><div class="feat-desc">Comprehensive digital resources available anytime</div></div>
+      <div class="feat-card reveal reveal-delay-3"><div class="feat-icon-wrap" aria-hidden="true">🧩</div><div class="feat-name">Daily Practice Problems</div><div class="feat-desc">1000+ DPPs every day to build exam-day speed</div></div>
+      <div class="feat-card reveal"><div class="feat-icon-wrap" aria-hidden="true">🔄</div><div class="feat-name">Weekly Revision</div><div class="feat-desc">Spaced repetition sessions to lock concepts in memory</div></div>
+      <div class="feat-card reveal reveal-delay-1"><div class="feat-icon-wrap" aria-hidden="true">📊</div><div class="feat-name">Sunday Tests</div><div class="feat-desc">Full-length weekly tests with detailed score analysis</div></div>
+      <div class="feat-card reveal reveal-delay-2"><div class="feat-icon-wrap" aria-hidden="true">🗺️</div><div class="feat-name">Mind Maps</div><div class="feat-desc">Visual summaries for fast last-minute revision</div></div>
+      <div class="feat-card reveal reveal-delay-3"><div class="feat-icon-wrap" aria-hidden="true">🃏</div><div class="feat-name">Flashcards</div><div class="feat-desc">Quick-recall cards for formulas, terms, and facts</div></div>
+      <div class="feat-card reveal"><div class="feat-icon-wrap" aria-hidden="true">🙋</div><div class="feat-name">Doubt Solving Support</div><div class="feat-desc">Daily dedicated sessions — no question goes unanswered</div></div>
+      <div class="feat-card reveal reveal-delay-1"><div class="feat-icon-wrap" aria-hidden="true">📈</div><div class="feat-name">Performance Tracking</div><div class="feat-desc">Personalised progress reports after every assessment</div></div>
+      <div class="feat-card reveal reveal-delay-2"><div class="feat-icon-wrap" aria-hidden="true">👨‍👩‍👧</div><div class="feat-name">Parent Updates</div><div class="feat-desc">Regular communication so families stay informed</div></div>
+      <div class="feat-card reveal reveal-delay-3"><div class="feat-icon-wrap" aria-hidden="true">🏅</div><div class="feat-name">Achievement Rewards</div><div class="feat-desc">Recognition and incentives to keep motivation high</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FACULTY ===== -->
+<section id="faculty" class="section">
+  <div class="container">
+    <div class="center reveal">
+      <span class="section-tag">Our Team</span>
+      <h2 class="section-title">Learn From <span class="grad-text">Dedicated Mentors</span></h2>
+      <p class="section-sub">Our mentors focus on simplifying difficult concepts and guiding students personally throughout their academic journey.</p>
+    </div>
+    <div class="faculty-grid">
+      <div class="faculty-card fc-1 reveal reveal-delay-1">
+        <div class="faculty-photo">
+          <svg viewBox="0 0 200 170" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;" aria-hidden="true">
+            <ellipse cx="100" cy="100" rx="90" ry="80" fill="rgba(201,188,255,0.3)"/>
+            <!-- Whiteboard -->
+            <rect x="118" y="38" width="70" height="50" rx="8" fill="white" opacity="0.85"/>
+            <text x="153" y="57" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#A897FF">Biology</text>
+            <text x="153" y="69" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="7" fill="#5A4E6A">Cell Division</text>
+            <line x1="126" y1="76" x2="178" y2="76" stroke="#C9BCFF" stroke-width="1.5"/>
+            <text x="140" y="83" font-size="8" fill="#F78DA7">🧬</text>
+            <!-- Teacher body -->
+            <rect x="74" y="108" width="52" height="38" rx="12" fill="#FFB5C8"/>
+            <polygon points="100,115 92,128 108,128" fill="#2A1F3D"/>
+            <!-- Pointer arm -->
+            <rect x="108" y="100" width="38" height="12" rx="6" fill="#F5C5A3" transform="rotate(-20 108 100)"/>
+            <!-- Head -->
+            <ellipse cx="100" cy="94" rx="26" ry="26" fill="#F5C5A3"/>
+            <!-- Hair - bun style -->
+            <ellipse cx="100" cy="74" rx="26" ry="14" fill="#1A1030"/>
+            <ellipse cx="112" cy="70" rx="10" ry="10" fill="#1A1030"/>
+            <!-- Bun -->
+            <circle cx="114" cy="65" r="9" fill="#1A1030"/>
+            <!-- Face -->
+            <ellipse cx="100" cy="95" rx="20" ry="21" fill="#F5C5A3"/>
+            <ellipse cx="91" cy="93" rx="3.5" ry="4" fill="#1A1030"/>
+            <ellipse cx="109" cy="93" rx="3.5" ry="4" fill="#1A1030"/>
+            <circle cx="92" cy="91" r="1.5" fill="white"/>
+            <circle cx="110" cy="91" r="1.5" fill="white"/>
+            <path d="M93 102 Q100 108 107 102" stroke="#C0614A" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <ellipse cx="84" cy="97" rx="6" ry="4" fill="#F78DA7" opacity="0.3"/>
+            <ellipse cx="116" cy="97" rx="6" ry="4" fill="#F78DA7" opacity="0.3"/>
+            <!-- Glasses -->
+            <circle cx="91" cy="93" r="6" stroke="#A897FF" stroke-width="1.5" fill="none"/>
+            <circle cx="109" cy="93" r="6" stroke="#A897FF" stroke-width="1.5" fill="none"/>
+            <line x1="97" y1="93" x2="103" y2="93" stroke="#A897FF" stroke-width="1.5"/>
+            <!-- Sparkle -->
+            <text x="28" y="60" font-size="13" opacity="0.7">✨</text>
+            <text x="160" y="110" font-size="11" opacity="0.6">🌿</text>
+          </svg>
+        </div>
+        <div class="faculty-info">
+          <div class="fac-name">Biology & NEET Expert</div>
+          <div class="fac-sub">Lead NEET Biology Mentor</div>
+          <span class="fac-exp">⭐ 5+ Years Experience</span>
+          <div class="fac-tags">
+            <span class="fac-tag">Botany</span>
+            <span class="fac-tag">Zoology</span>
+            <span class="fac-tag">NEET Strategy</span>
+          </div>
+        </div>
+      </div>
+      <div class="faculty-card fc-2 reveal reveal-delay-2">
+        <div class="faculty-photo">
+          <svg viewBox="0 0 200 170" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;" aria-hidden="true">
+            <ellipse cx="100" cy="100" rx="90" ry="80" fill="rgba(255,207,170,0.3)"/>
+            <!-- Flask -->
+            <rect x="130" y="60" width="18" height="8" rx="3" fill="#B8DEFF"/>
+            <path d="M131 68 L124 98 Q122 106 132 108 L150 108 Q160 106 158 98 L151 68 Z" fill="#7EC8F4" opacity="0.8"/>
+            <ellipse cx="141" cy="108" rx="16" ry="5" fill="#5ABDE8"/>
+            <circle cx="134" cy="88" r="3" fill="white" opacity="0.6"/>
+            <circle cx="148" cy="82" r="2" fill="white" opacity="0.5"/>
+            <!-- Bubbles -->
+            <circle cx="141" cy="55" r="4" fill="#7EC8F4" opacity="0.5"/>
+            <circle cx="148" cy="46" r="3" fill="#B8DEFF" opacity="0.6"/>
+            <circle cx="133" cy="48" r="2.5" fill="#7EC8F4" opacity="0.5"/>
+            <!-- Teacher body -->
+            <rect x="68" y="108" width="54" height="38" rx="12" fill="#FFCFAA"/>
+            <polygon points="95,115 87,129 103,129" fill="#2A1F3D"/>
+            <!-- Arm holding flask -->
+            <rect x="104" y="98" width="36" height="12" rx="6" fill="#F5C5A3" transform="rotate(-15 104 98)"/>
+            <!-- Head -->
+            <ellipse cx="95" cy="92" rx="26" ry="26" fill="#F5C5A3"/>
+            <!-- Hair - short -->
+            <ellipse cx="95" cy="74" rx="26" ry="16" fill="#4A3020"/>
+            <ellipse cx="95" cy="80" rx="24" ry="14" fill="#4A3020"/>
+            <!-- Face -->
+            <ellipse cx="95" cy="94" rx="21" ry="21" fill="#F5C5A3"/>
+            <ellipse cx="86" cy="91" rx="3.5" ry="4" fill="#1A1030"/>
+            <ellipse cx="104" cy="91" rx="3.5" ry="4" fill="#1A1030"/>
+            <circle cx="87" cy="89" r="1.5" fill="white"/>
+            <circle cx="105" cy="89" r="1.5" fill="white"/>
+            <path d="M88 101 Q95 108 102 101" stroke="#C0614A" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <ellipse cx="79" cy="96" rx="6" ry="4" fill="#F78DA7" opacity="0.3"/>
+            <ellipse cx="111" cy="96" rx="6" ry="4" fill="#F78DA7" opacity="0.3"/>
+            <text x="28" y="55" font-size="13" opacity="0.7">⚗️</text>
+            <text x="30" y="125" font-size="11" opacity="0.6">✨</text>
+          </svg>
+        </div>
+        <div class="faculty-info">
+          <div class="fac-name">Chemistry Specialist</div>
+          <div class="fac-sub">Physical, Organic & Inorganic</div>
+          <span class="fac-exp">⭐ 6+ Years Experience</span>
+          <div class="fac-tags">
+            <span class="fac-tag">Physical Chem</span>
+            <span class="fac-tag">Organic Chem</span>
+            <span class="fac-tag">Numericals</span>
+          </div>
+        </div>
+      </div>
+      <div class="faculty-card fc-3 reveal reveal-delay-3">
+        <div class="faculty-photo">
+          <svg viewBox="0 0 200 170" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;" aria-hidden="true">
+            <ellipse cx="100" cy="100" rx="90" ry="80" fill="rgba(184,222,255,0.3)"/>
+            <!-- Chalkboard with formula -->
+            <rect x="115" y="35" width="72" height="52" rx="8" fill="#2A1F3D"/>
+            <rect x="120" y="40" width="62" height="42" rx="5" fill="#3A2F5A"/>
+            <text x="151" y="56" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" fill="#B8DEFF">F = ma</text>
+            <line x1="128" y1="63" x2="174" y2="63" stroke="#A897FF" stroke-width="1.2"/>
+            <text x="138" y="74" font-family="'DM Sans',sans-serif" font-size="7" fill="#FFB5C8">E = mc²</text>
+            <!-- Teacher body (male - broader) -->
+            <rect x="72" y="108" width="56" height="40" rx="12" fill="#B8DEFF"/>
+            <polygon points="100,115 91,130 109,130" fill="#2A1F3D"/>
+            <!-- Pointer -->
+            <rect x="108" y="88" width="44" height="8" rx="4" fill="#FFCFAA" transform="rotate(-35 108 88)"/>
+            <!-- Head -->
+            <ellipse cx="100" cy="92" rx="27" ry="27" fill="#C8956A"/>
+            <!-- Hair - short dark -->
+            <ellipse cx="100" cy="74" rx="27" ry="15" fill="#1A1030"/>
+            <ellipse cx="100" cy="79" rx="25" ry="13" fill="#1A1030"/>
+            <!-- Face -->
+            <ellipse cx="100" cy="94" rx="22" ry="22" fill="#C8956A"/>
+            <ellipse cx="90" cy="91" rx="3.5" ry="4" fill="#1A1030"/>
+            <ellipse cx="110" cy="91" rx="3.5" ry="4" fill="#1A1030"/>
+            <circle cx="91" cy="89" r="1.5" fill="white"/>
+            <circle cx="111" cy="89" r="1.5" fill="white"/>
+            <path d="M92 103 Q100 110 108 103" stroke="#8B4A30" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+            <!-- Stubble hint -->
+            <ellipse cx="100" cy="106" rx="14" ry="4" fill="#A8754A" opacity="0.25"/>
+            <text x="24" y="55" font-size="14" opacity="0.7">📐</text>
+            <text x="24" y="125" font-size="11" opacity="0.6">💡</text>
+            <circle cx="168" cy="115" r="5" fill="#FFB5C8" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="faculty-info">
+          <div class="fac-name">Physics & Maths Faculty</div>
+          <div class="fac-sub">Class 11, 12 & NEET Physics</div>
+          <span class="fac-exp">⭐ 7+ Years Experience</span>
+          <div class="fac-tags">
+            <span class="fac-tag">Mechanics</span>
+            <span class="fac-tag">Electrostatics</span>
+            <span class="fac-tag">Board Maths</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section id="testimonials" class="section">
+  <div class="container">
+    <div class="center reveal">
+      <span class="section-tag">Student Reviews</span>
+      <h2 class="section-title">Student <span class="grad-text">Success Stories</span></h2>
+      <p class="section-sub">Hear from the students whose lives changed with the right guidance and consistent effort.</p>
+    </div>
+    <div class="testi-slider reveal">
+      <div class="testi-track" id="testiTrack">
+        <div class="testi-card">
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+          <p class="testi-text">The teaching style is very easy to understand and the tests improved my confidence tremendously. I never thought I could score this well in NEET.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">👧</div>
+            <div>
+              <div class="testi-name">Ayesha R.</div>
+              <div class="testi-role">NEET Student, Hyderabad</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+          <p class="testi-text">Best coaching for disciplined preparation and revision. The Sunday tests helped me identify my weak spots every single week and fix them on time.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">👦</div>
+            <div>
+              <div class="testi-name">Mohammed S.</div>
+              <div class="testi-role">Class 12, Old Malakpet</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+          <p class="testi-text">The notes and practice questions helped me improve a lot. The faculty is very patient and explains every concept until you truly understand it.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">👩</div>
+            <div>
+              <div class="testi-name">Priya K.</div>
+              <div class="testi-role">Class 11, Hyderabad</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+          <p class="testi-text">Mind maps and flashcards made revision so much easier. I used to struggle with organic chemistry but now it feels like second nature. Highly recommend!</p>
+          <div class="testi-author">
+            <div class="testi-avatar">🧑</div>
+            <div>
+              <div class="testi-name">Rahul T.</div>
+              <div class="testi-role">NEET Aspirant, Abu Dhabi</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+          <p class="testi-text">The parent updates feature is amazing. My parents could track my progress and it motivated me to work harder. NoCap Academy truly cares about students.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">👧</div>
+            <div>
+              <div class="testi-name">Fatima N.</div>
+              <div class="testi-role">Class 12, Abu Dhabi UAE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-nav" id="testiDots"></div>
+      <div class="testi-arrows">
+        <button class="tarrow" id="testiPrev">←</button>
+        <button class="tarrow" id="testiNext">→</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ILLUSTRATION BANNER ===== -->
+<section style="background:linear-gradient(135deg,rgba(201,188,255,0.18) 0%,rgba(255,181,200,0.15) 50%,rgba(184,222,255,0.18) 100%);padding:60px 0;overflow:hidden;">
+  <div class="container" style="text-align:center;">
+    <p class="section-tag" style="margin-bottom:18px;">Together We Achieve</p>
+    <h2 class="section-title center" style="margin-bottom:36px;">Join <span class="grad-text">Hundreds of Achievers</span></h2>
+    <!-- Group illustration: 3 students studying together -->
+    <div style="display:flex;justify-content:center;gap:0;flex-wrap:wrap;">
+      <svg viewBox="0 0 700 260" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;filter:drop-shadow(0 10px 30px rgba(168,151,255,0.15));animation:floatA 8s ease-in-out infinite;" aria-hidden="true">
+        <!-- Ground / table -->
+        <rect x="40" y="198" width="620" height="16" rx="8" fill="#C9BCFF" opacity="0.6"/>
+
+        <!-- ===== STUDENT 1 (left): Girl with book ===== -->
+        <!-- Book -->
+        <rect x="50" y="148" width="90" height="62" rx="10" fill="#FFB5C8"/>
+        <rect x="94" y="148" width="46" height="62" rx="10" fill="#F78DA7"/>
+        <rect x="56" y="156" width="32" height="5" rx="3" fill="white" opacity="0.55"/>
+        <rect x="56" y="165" width="28" height="5" rx="3" fill="white" opacity="0.45"/>
+        <rect x="56" y="174" width="34" height="5" rx="3" fill="white" opacity="0.5"/>
+        <rect x="56" y="183" width="24" height="5" rx="3" fill="white" opacity="0.4"/>
+        <rect x="100" y="156" width="32" height="5" rx="3" fill="white" opacity="0.55"/>
+        <rect x="100" y="165" width="28" height="5" rx="3" fill="white" opacity="0.45"/>
+        <rect x="100" y="174" width="34" height="5" rx="3" fill="white" opacity="0.5"/>
+        <!-- Arm -->
+        <rect x="50" y="185" width="44" height="16" rx="8" fill="#F5C5A3"/>
+        <rect x="116" y="185" width="44" height="16" rx="8" fill="#F5C5A3"/>
+        <!-- Body -->
+        <rect x="64" y="150" width="52" height="52" rx="14" fill="#FFCFAA"/>
+        <!-- Neck -->
+        <rect x="82" y="128" width="18" height="26" rx="8" fill="#F5C5A3"/>
+        <!-- Head -->
+        <ellipse cx="91" cy="112" rx="30" ry="28" fill="#F5C5A3"/>
+        <!-- Hair with braid -->
+        <ellipse cx="91" cy="94" rx="30" ry="18" fill="#1A1030"/>
+        <ellipse cx="91" cy="100" rx="28" ry="14" fill="#1A1030"/>
+        <ellipse cx="91" cy="112" rx="22" ry="20" fill="#F5C5A3"/>
+        <!-- Braid beads -->
+        <circle cx="67" cy="105" r="7" fill="#1A1030"/>
+        <circle cx="65" cy="120" r="7" fill="#1A1030"/>
+        <circle cx="63" cy="135" r="6" fill="#1A1030"/>
+        <!-- Hair clips (green) -->
+        <ellipse cx="108" cy="92" rx="9" ry="5" fill="#7ED992" transform="rotate(-25 108 92)"/>
+        <ellipse cx="118" cy="87" rx="7" ry="4" fill="#5BC478" transform="rotate(-10 118 87)"/>
+        <!-- Eyes -->
+        <ellipse cx="82" cy="110" rx="4" ry="4.5" fill="#1A1030"/>
+        <ellipse cx="100" cy="110" rx="4" ry="4.5" fill="#1A1030"/>
+        <circle cx="83" cy="108" r="1.8" fill="white"/>
+        <circle cx="101" cy="108" r="1.8" fill="white"/>
+        <!-- Smile -->
+        <path d="M84 120 Q91 127 98 120" stroke="#C0614A" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <ellipse cx="75" cy="115" rx="6" ry="4" fill="#F78DA7" opacity="0.3"/>
+        <ellipse cx="107" cy="115" rx="6" ry="4" fill="#F78DA7" opacity="0.3"/>
+
+        <!-- ===== STUDENT 2 (center): Boy with laptop ===== -->
+        <!-- Laptop -->
+        <rect x="268" y="112" width="164" height="90" rx="14" fill="#2A1F3D"/>
+        <rect x="275" y="118" width="150" height="76" rx="10" fill="#B8DEFF"/>
+        <!-- Screen content -->
+        <rect x="283" y="126" width="60" height="6" rx="3" fill="white" opacity="0.6"/>
+        <rect x="283" y="136" width="44" height="6" rx="3" fill="#FFB5C8" opacity="0.8"/>
+        <rect x="283" y="146" width="70" height="6" rx="3" fill="white" opacity="0.5"/>
+        <rect x="283" y="156" width="38" height="6" rx="3" fill="#BFFCE0" opacity="0.8"/>
+        <!-- Formula/diagram on right of screen -->
+        <circle cx="370" cy="145" r="14" fill="#A897FF" opacity="0.4"/>
+        <text x="370" y="150" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" fill="white">PCB</text>
+        <!-- Laptop base -->
+        <rect x="260" y="198" width="180" height="12" rx="6" fill="#1A1030"/>
+        <!-- Camera -->
+        <circle cx="350" cy="122" r="3.5" fill="#1A1030"/>
+        <!-- Boy body -->
+        <rect x="316" y="170" width="68" height="36" rx="14" fill="#7EC8F4"/>
+        <polygon points="350,177 341,190 359,190" fill="#2A1F3D"/>
+        <!-- Arms on desk -->
+        <rect x="272" y="188" width="52" height="16" rx="8" fill="#C8956A"/>
+        <rect x="376" y="188" width="52" height="16" rx="8" fill="#C8956A"/>
+        <!-- Neck -->
+        <rect x="340" y="152" width="20" height="22" rx="9" fill="#C8956A"/>
+        <!-- Head -->
+        <ellipse cx="350" cy="136" rx="30" ry="30" fill="#C8956A"/>
+        <!-- Hair short -->
+        <ellipse cx="350" cy="117" rx="30" ry="17" fill="#1A1030"/>
+        <ellipse cx="350" cy="122" rx="28" ry="14" fill="#1A1030"/>
+        <!-- Face -->
+        <ellipse cx="350" cy="137" rx="24" ry="24" fill="#C8956A"/>
+        <!-- Eyes wide/focused -->
+        <ellipse cx="340" cy="134" rx="4.5" ry="5" fill="#1A1030"/>
+        <ellipse cx="360" cy="134" rx="4.5" ry="5" fill="#1A1030"/>
+        <circle cx="341" cy="132" r="2" fill="white"/>
+        <circle cx="361" cy="132" r="2" fill="white"/>
+        <!-- Eyebrows raised (focused) -->
+        <path d="M334 127 Q340 123 346 127" stroke="#1A1030" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+        <path d="M354 127 Q360 123 366 127" stroke="#1A1030" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+        <!-- Smile open (excited) -->
+        <path d="M342 148 Q350 158 358 148" stroke="#8B4A30" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M345 149 Q350 156 355 149" fill="white"/>
+        <ellipse cx="332" cy="142" rx="7" ry="5" fill="#F78DA7" opacity="0.25"/>
+        <ellipse cx="368" cy="142" rx="7" ry="5" fill="#F78DA7" opacity="0.25"/>
+
+        <!-- ===== STUDENT 3 (right): Girl with notes ===== -->
+        <!-- Notebook -->
+        <rect x="558" y="140" width="88" height="68" rx="10" fill="#A897FF"/>
+        <rect x="560" y="142" width="4" height="64" rx="2" fill="#8070DD"/>
+        <rect x="570" y="150" width="64" height="5" rx="3" fill="white" opacity="0.6"/>
+        <rect x="570" y="160" width="52" height="5" rx="3" fill="white" opacity="0.5"/>
+        <rect x="570" y="170" width="58" height="5" rx="3" fill="white" opacity="0.55"/>
+        <rect x="570" y="180" width="44" height="5" rx="3" fill="white" opacity="0.4"/>
+        <rect x="570" y="190" width="60" height="5" rx="3" fill="white" opacity="0.45"/>
+        <!-- Pen in hand -->
+        <rect x="608" y="128" width="6" height="30" rx="3" fill="#FFAE7A" transform="rotate(20 608 128)"/>
+        <!-- Arm holding pen -->
+        <rect x="582" y="186" width="48" height="15" rx="7" fill="#F5C5A3" transform="rotate(-8 582 186)"/>
+        <rect x="530" y="188" width="46" height="15" rx="7" fill="#F5C5A3"/>
+        <!-- Body -->
+        <rect x="556" y="152" width="54" height="50" rx="14" fill="#BFFCE0"/>
+        <polygon points="583,159 575,172 591,172" fill="#2A1F3D"/>
+        <!-- Neck -->
+        <rect x="573" y="130" width="18" height="24" rx="8" fill="#F5C5A3"/>
+        <!-- Head -->
+        <ellipse cx="582" cy="113" rx="30" ry="28" fill="#F5C5A3"/>
+        <!-- Hair wavy / ponytail -->
+        <ellipse cx="582" cy="95" rx="30" ry="18" fill="#5A3820"/>
+        <ellipse cx="582" cy="101" rx="28" ry="15" fill="#5A3820"/>
+        <!-- Ponytail -->
+        <ellipse cx="612" cy="105" rx="10" ry="20" fill="#5A3820" transform="rotate(20 612 105)"/>
+        <!-- Face -->
+        <ellipse cx="582" cy="115" rx="23" ry="22" fill="#F5C5A3"/>
+        <ellipse cx="572" cy="112" rx="4" ry="4.5" fill="#1A1030"/>
+        <ellipse cx="592" cy="112" rx="4" ry="4.5" fill="#1A1030"/>
+        <circle cx="573" cy="110" r="1.8" fill="white"/>
+        <circle cx="593" cy="110" r="1.8" fill="white"/>
+        <path d="M575 122 Q582 130 589 122" stroke="#C0614A" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <ellipse cx="565" cy="117" rx="6" ry="4" fill="#F78DA7" opacity="0.32"/>
+        <ellipse cx="599" cy="117" rx="6" ry="4" fill="#F78DA7" opacity="0.32"/>
+        <!-- Hair accessory -->
+        <circle cx="610" cy="94" r="8" fill="#FFB5C8"/>
+        <circle cx="610" cy="94" r="5" fill="#F78DA7"/>
+
+        <!-- Floating elements -->
+        <text x="148" y="82" font-size="16" opacity="0.7">💡</text>
+        <text x="218" y="140" font-size="14" opacity="0.5">📝</text>
+        <text x="484" y="80" font-size="16" opacity="0.65">⭐</text>
+        <text x="544" y="140" font-size="14" opacity="0.5">✨</text>
+        <circle cx="200" cy="170" r="8" fill="#FFB5C8" opacity="0.5"/>
+        <circle cx="500" cy="165" r="7" fill="#C9BCFF" opacity="0.5"/>
+        <circle cx="240" cy="80" r="5" fill="#FFCFAA" opacity="0.6"/>
+        <circle cx="460" cy="88" r="6" fill="#B8DEFF" opacity="0.55"/>
+
+        <!-- Speech bubble above center student -->
+        <rect x="292" y="52" width="116" height="40" rx="14" fill="white" opacity="0.85"/>
+        <polygon points="350,92 342,105 358,105" fill="white" opacity="0.85"/>
+        <text x="350" y="70" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" font-weight="600" fill="#A897FF">I got it! 🎉</text>
+        <text x="350" y="84" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8.5" fill="#5A4E6A">Concept cleared!</text>
+      </svg>
+    </div>
+    <div style="margin-top:32px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
+      <a href="#contact" class="btn btn-primary">✨ Start Your Journey</a>
+      <a href="#courses" class="btn btn-outline">📚 Explore Programs</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq" class="section">
+  <div class="container">
+    <div class="center reveal">
+      <span class="section-tag">FAQ</span>
+      <h2 class="section-title">Frequently Asked <span class="grad-text">Questions</span></h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q">What courses does NoCap Academy offer? <span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">We offer expert coaching for NEET preparation, Class 11, and Class 12 with complete subject coverage, mock tests, and personalised mentorship.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Where are your branches located? <span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">We have two branches — India: 16-9-423/C, Old Malakpet, Near Water Tank, Hyderabad – 500036; UAE: Villa No 45, Baniyas East 7th, Abu Dhabi, UAE.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How do I book a free demo class? <span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">Simply fill out the contact form on this page or call us directly. We'll schedule a free demo class at a time that works for you.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you provide study materials and notes? <span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">Yes! Students receive handwritten notes, PDF study materials, mind maps, flashcards, and daily practice problems (DPPs) as part of the program.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Are there regular tests and performance tracking? <span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">Absolutely. We conduct weekly tests every Sunday and provide detailed performance analysis. Parents also receive regular updates on their child's progress.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is doubt solving available outside class hours? <span class="faq-arrow">⌄</span></div>
+        <div class="faq-a">Yes, we have dedicated doubt-solving sessions available daily so no student is left with unresolved questions.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="center reveal">
+      <span class="section-tag">Get In Touch</span>
+      <h2 class="section-title"><span class="grad-text">Contact Us</span></h2>
+      <p class="section-sub">Reach out to enroll, book your free demo, or ask any questions. We're here to help!</p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info-card reveal">
+          <div class="branch-name"><span class="branch-flag">🇮🇳</span> India Branch</div>
+          <div class="contact-row">
+            <span class="contact-icon">📍</span>
+            <span>16-9-423/C, Old Malakpet, Near Water Tank, Hyderabad – 500036</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-icon">📞</span>
+            <a href="tel:+916303924963" style="color:inherit;">+91 6303924963</a>
+          </div>
+          <div class="contact-row">
+            <span class="contact-icon">✉️</span>
+            <span>info@nocapacademy.in</span>
+          </div>
+          <div class="social-row">
+            <a href="https://wa.me/916303924963" class="social-btn" title="WhatsApp" aria-label="Chat on WhatsApp (India)">💬</a>
+            <a href="#" class="social-btn" title="Instagram" aria-label="Instagram">📸</a>
+            <a href="#" class="social-btn" title="Facebook" aria-label="Facebook">👥</a>
+            <a href="#" class="social-btn" title="YouTube" aria-label="YouTube">▶️</a>
+          </div>
+          <a href="https://maps.google.com/?q=Old+Malakpet+Hyderabad" target="_blank" rel="noopener" class="map-placeholder" style="display:grid;text-decoration:none;cursor:pointer;" aria-label="Open Old Malakpet location in Google Maps">📍 Open in Google Maps → Old Malakpet, Hyderabad</a>
+        </div>
+        <div class="contact-info-card reveal reveal-delay-1">
+          <div class="branch-name"><span class="branch-flag">🇦🇪</span> UAE Branch</div>
+          <div class="contact-row">
+            <span class="contact-icon">📍</span>
+            <span>Villa No 45, Baniyas East 7th, Abu Dhabi, UAE</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-icon">📞</span>
+            <a href="tel:+971582887447" style="color:inherit;">+971 582887447</a>
+          </div>
+          <div class="contact-row">
+            <span class="contact-icon">✉️</span>
+            <span>uae@nocapacademy.in</span>
+          </div>
+          <div class="social-row">
+            <a href="https://wa.me/971582887447" class="social-btn" title="WhatsApp UAE" aria-label="Chat on WhatsApp (UAE)">💬</a>
+            <a href="#" class="social-btn" title="Instagram UAE" aria-label="Instagram UAE">📸</a>
+          </div>
+          <a href="https://maps.google.com/?q=Baniyas+Abu+Dhabi+UAE" target="_blank" rel="noopener" class="map-placeholder" style="display:grid;text-decoration:none;cursor:pointer;" aria-label="Open Baniyas Abu Dhabi location in Google Maps">📍 Open in Google Maps → Baniyas, Abu Dhabi UAE</a>
+        </div>
+      </div>
+      <div class="contact-form-wrap reveal reveal-delay-2">
+        <h3 class="form-title">Send Us a Message ✨</h3>
+        <div class="form-row">
+          <div class="form-group" id="group-fname">
+            <label for="fname">Student Name *</label>
+            <input type="text" placeholder="Your full name" id="fname" autocomplete="name" />
+            <span class="form-error" id="err-fname">Please enter your name.</span>
+          </div>
+          <div class="form-group">
+            <label for="fparent">Parent Name</label>
+            <input type="text" placeholder="Parent / guardian name" id="fparent" autocomplete="name" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group" id="group-fphone">
+            <label for="fphone">Phone Number *</label>
+            <input type="tel" placeholder="+91 or +971" id="fphone" autocomplete="tel" />
+            <span class="form-error" id="err-fphone">Please enter your phone number.</span>
+          </div>
+          <div class="form-group">
+            <label for="femail">Email Address</label>
+            <input type="email" placeholder="your@email.com" id="femail" autocomplete="email" />
+          </div>
+        </div>
+        <div class="form-group" id="group-fcourse">
+          <label for="fcourse">Interested In *</label>
+          <select id="fcourse">
+            <option value="">Select a program</option>
+            <option>NEET Coaching</option>
+            <option>Class 11 Coaching</option>
+            <option>Class 12 Coaching</option>
+            <option>Free Demo Class</option>
+          </select>
+          <span class="form-error" id="err-fcourse">Please select a program.</span>
+        </div>
+        <div class="form-group">
+          <label for="fbranch">Branch</label>
+          <select id="fbranch">
+            <option>Hyderabad, India</option>
+            <option>Abu Dhabi, UAE</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="fmessage">Message</label>
+          <textarea placeholder="Any specific questions or requirements?" id="fmessage"></textarea>
+        </div>
+        <button type="button" class="btn btn-primary" style="width:100%;justify-content:center;" id="formSubmit">
+          Send Message ✉️
+        </button>
+        <div class="form-success" id="formSuccess">
+          🎉 Thank you! We'll reach out within 24 hours to schedule your free demo.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo" style="font-size:1.25rem">
+          <div class="logo-dot">🎓</div>
+          NoCap Academy
+        </div>
+        <p>Discipline • Consistency • Success<br/>Expert coaching for NEET, Class 11 &amp; 12 with personal mentorship across India and UAE.</p>
+        <div class="footer-social">
+          <a href="https://wa.me/916303924963" class="social-btn" aria-label="WhatsApp">💬</a>
+          <a href="#" class="social-btn" aria-label="Instagram">📸</a>
+          <a href="#" class="social-btn" aria-label="Facebook">👥</a>
+          <a href="#" class="social-btn" aria-label="YouTube">▶️</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#courses">Our Programs</a></li>
+          <li><a href="#features">Student Benefits</a></li>
+          <li><a href="#faculty">Faculty</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Programs</h4>
+        <ul>
+          <li><a href="#courses">NEET Coaching</a></li>
+          <li><a href="#courses">Class 11 Coaching</a></li>
+          <li><a href="#courses">Class 12 Coaching</a></li>
+          <li><a href="#contact">Free Demo Class</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+916303924963">🇮🇳 +91 6303924963</a></li>
+          <li><a href="tel:+971582887447">🇦🇪 +971 582887447</a></li>
+          <li><a href="#">Old Malakpet, Hyderabad</a></li>
+          <li><a href="#">Baniyas, Abu Dhabi UAE</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <span>© 2026 NoCap Academy. All rights reserved.</span>
+      <span class="footer-tagline">Discipline • Consistency • Success</span>
+      <span>Made with ❤️ for future doctors</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp -->
+<a href="https://wa.me/916303924963" class="wa-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <div class="wa-pulse"></div>
+  💬
+</a>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+// ---- Navbar scroll ----
+const navbar = document.getElementById('navbar');
+const navCta = document.getElementById('navCta');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) {
+    navbar.classList.add('scrolled');
+    navCta.style.display = 'inline-flex';
+  } else {
+    navbar.classList.remove('scrolled');
+    navCta.style.display = 'none';
+  }
+}, { passive: true });
+
+// ---- Mobile menu ----
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileClose = document.getElementById('mobileClose');
+
+function openMenu() {
+  mobileMenu.classList.add('open');
+  hamburger.setAttribute('aria-expanded', 'true');
+  hamburger.setAttribute('aria-label', 'Close menu');
+}
+function closeMenu() {
+  mobileMenu.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
+  hamburger.setAttribute('aria-label', 'Open menu');
+}
+
+hamburger.addEventListener('click', () => {
+  mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
+});
+mobileClose.addEventListener('click', closeMenu);
+document.querySelectorAll('.mobile-link').forEach(l => {
+  l.addEventListener('click', closeMenu);
+});
+// Close on Escape
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMenu();
+});
+
+// ---- Theme toggle (persisted) ----
+const themeToggle = document.getElementById('themeToggle');
+let dark = localStorage.getItem('theme') === 'dark';
+
+function applyTheme() {
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  themeToggle.textContent = dark ? '☀️' : '🌙';
+  themeToggle.setAttribute('aria-pressed', String(dark));
+  localStorage.setItem('theme', dark ? 'dark' : 'light');
+}
+applyTheme(); // apply saved theme on load
+
+themeToggle.addEventListener('click', () => {
+  dark = !dark;
+  applyTheme();
+});
+
+// ---- Scroll reveal ----
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ---- Animated counters (unified) ----
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  const duration = 1800;
+  const start = performance.now();
+  function step(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    el.textContent = Math.floor(progress * target);
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = target;
+  }
+  requestAnimationFrame(step);
+}
+
+// Hero counters on load
+setTimeout(() => {
+  document.querySelectorAll('.hero-stats .counter-anim').forEach(animateCounter);
+}, 600);
+
+// Section counters on scroll
+let counted = false;
+const countersSection = document.getElementById('counters');
+const counterObs = new IntersectionObserver((entries) => {
+  if (entries[0].isIntersecting && !counted) {
+    counted = true;
+    document.querySelectorAll('#counters .counter-anim, #about .counter-anim').forEach(animateCounter);
+  }
+}, { threshold: 0.3 });
+counterObs.observe(countersSection);
+
+// ---- Testimonial slider ----
+const track = document.getElementById('testiTrack');
+const dotsContainer = document.getElementById('testiDots');
+const cards = track.querySelectorAll('.testi-card');
+let currentSlide = 0;
+const visibleCards = () => window.innerWidth < 700 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+
+// Create dots
+cards.forEach((_, i) => {
+  const dot = document.createElement('button');
+  dot.type = 'button';
+  dot.className = 'testi-dot' + (i === 0 ? ' active' : '');
+  dot.setAttribute('aria-label', `Go to testimonial ${i + 1}`);
+  dot.addEventListener('click', () => goToSlide(i));
+  dotsContainer.appendChild(dot);
+});
+
+function goToSlide(n) {
+  const maxSlide = Math.max(0, cards.length - visibleCards());
+  currentSlide = Math.max(0, Math.min(n, maxSlide));
+  const cardWidth = cards[0].offsetWidth + 24;
+  track.style.transform = `translateX(-${currentSlide * cardWidth}px)`;
+  dotsContainer.querySelectorAll('.testi-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === currentSlide);
+  });
+}
+
+document.getElementById('testiPrev').addEventListener('click', () => goToSlide(currentSlide - 1));
+document.getElementById('testiNext').addEventListener('click', () => goToSlide(currentSlide + 1));
+
+// Auto-play
+function makeAutoplay() {
+  return setInterval(() => {
+    const maxSlide = Math.max(0, cards.length - visibleCards());
+    goToSlide(currentSlide >= maxSlide ? 0 : currentSlide + 1);
+  }, 4500);
+}
+let autoPlay = makeAutoplay();
+track.addEventListener('mouseenter', () => clearInterval(autoPlay));
+track.addEventListener('mouseleave', () => { autoPlay = makeAutoplay(); });
+window.addEventListener('resize', () => goToSlide(currentSlide), { passive: true });
+
+// ---- FAQ ----
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.setAttribute('role', 'button');
+  q.setAttribute('tabindex', '0');
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+  q.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); q.click(); }
+  });
+});
+
+// ---- Contact form (inline validation) ----
+function setError(groupId, errId, show) {
+  const group = document.getElementById(groupId);
+  const err = document.getElementById(errId);
+  if (!group || !err) return;
+  group.classList.toggle('has-error', show);
+  err.style.display = show ? 'block' : 'none';
+}
+
+document.getElementById('formSubmit').addEventListener('click', () => {
+  const name = document.getElementById('fname').value.trim();
+  const phone = document.getElementById('fphone').value.trim();
+  const course = document.getElementById('fcourse').value;
+
+  const nameErr = !name;
+  const phoneErr = !phone;
+  const courseErr = !course;
+
+  setError('group-fname', 'err-fname', nameErr);
+  setError('group-fphone', 'err-fphone', phoneErr);
+  setError('group-fcourse', 'err-fcourse', courseErr);
+
+  if (nameErr || phoneErr || courseErr) return;
+
+  document.getElementById('formSubmit').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+});
+
+// Clear errors on input
+['fname','fphone','fcourse'].forEach(id => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener('input', () => {
+    const groupMap = { fname: 'group-fname', fphone: 'group-fphone', fcourse: 'group-fcourse' };
+    const errMap = { fname: 'err-fname', fphone: 'err-fphone', fcourse: 'err-fcourse' };
+    setError(groupMap[id], errMap[id], false);
+  });
+});
+</script>
+</body>
+</html>
